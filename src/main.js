@@ -36,6 +36,7 @@ const createWindow = () => {
       webgl: false, // 关闭webgl支持
       plugins: false, // 是否支持插件
       scrollBounce: false, // 是否启动弹性滚动
+      // webviewTag: true // 是否启用 <webview> tag标签
     }
   });
 
@@ -78,3 +79,5 @@ app.on('activate', () => {
 });
 
 // 在此文件中，您可以包含应用程序的其他特定主进程代码。您也可以将它们放在单独的文件中，并在这里require它们。
+
+

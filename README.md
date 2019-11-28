@@ -43,3 +43,17 @@ Note: If you're using Linux Bash for Windows, [see this guide](https://www.howto
 ## License
 
 [CC0 1.0 (Public Domain)](LICENSE.md)
+
+### 插件
+###### C++语言Node插件
+[node-printer](https://github.com/tojocky/node-printer)
+###### 爱普生打印机插件
+[node-escpos](https://github.com/song940/node-escpos)
+###### 用于EPSON和STAR热敏打印机命令行打印的Node.js模块。
+[node-thermal-printer](https://github.com/Klemen1337/node-thermal-printer)
+###### 蓝牙打印
+[BluetoothPrinter](https://github.com/qihang666/BluetoothPrinter)
+###### 打印PDF
+[pdf-to-printer](https://github.com/artiebits/pdf-to-printer)
+###### IPP打印
+[ipp-printer](https://github.com/watson/ipp-printer)
