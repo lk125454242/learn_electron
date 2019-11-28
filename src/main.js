@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, BrowserView } = require('electron');
 import { getPrinter } from './tools/print'
 
 // 安装/卸载时处理在Windows上创建/删除快捷方式。
@@ -12,18 +12,40 @@ let mainWindow;
 const createWindow = () => {
   // 创建浏览器窗口
   mainWindow = new BrowserWindow({
+    title: '打印',
     width: 1200,
     height: 600,
+    center: true, // 窗口屏幕居中
+    minWidth: 1200,
+    minHeight: 500,
+    backgroundColor: '#FFFFFF',
+    hasShadow: true, //MAC 上添加阴影
+    // show: false,
     webPreferences: {
-      nodeIntegration: true, // node进程
-      nodeIntegrationInWorker: true, // 多线程
-      offscreen: true
+      // devTools: false, // 开发控制台时候可以打开
+      preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
+      nodeIntegration: true, // 集成node进程
+      nodeIntegrationInWorker: true, // 开启Node多线程
+      // preload: '', // 预加载
+      enableRemoteModule: true, // 启用 remote 模块
+      // session: '', // 设置用户 session
+      // partition: '', // 设置用户 session
+      webSecurity: false, // 禁用同源策略
+      allowRunningInsecureContent: true, // 允许一个 https 页面运行 http url 里的资源
+      textAreasAreResizable: false, // 禁止textarea拖拽改变大小
+      webgl: false, // 关闭webgl支持
+      plugins: false, // 是否支持插件
+      scrollBounce: false, // 是否启动弹性滚动
     }
   });
 
   // 并加载应用程序的index.html。
   // mainWindow.loadFile('./public/index.html')
+  console.log(
+    'MAIN_WINDOW_WEBPACK_ENTRY', MAIN_WINDOW_WEBPACK_ENTRY
+  )
   mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
+  // mainWindow.loadURL('https://github.com')
 
   // console.log('getPrinter', getPrinter(mainWindow))
 
@@ -32,6 +54,7 @@ const createWindow = () => {
 
   // Emitted when the window is closed.
   mainWindow.on('closed', () => {
+    console.log('####', 'closed')
     // 取消对窗口对象的引用，如果应用程序支持多个窗口，则通常会将窗口存储在数组中，此时应删除相应的元素。
     mainWindow = null;
   });

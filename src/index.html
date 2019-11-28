@@ -3,21 +3,40 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Hello World!</title>
-
+  <title>打印</title>
+  <style type="text/css">
+    .version {
+      padding: 5px 10px;
+      position: fixed;
+      right: 0;
+      top: 0;
+      width: 120px;
+      opacity: 0.5;
+      background-color: #000;
+      color: white;
+    }
+  </style>
 </head>
 
 <body>
-  <h1>Hello World!</h1>
-  We are using node <script>
-    document.write(process.versions.node)
-  </script>,
-  Chrome <script>
-    document.write(process.versions.chrome)
-  </script>,
-  and Electron <script>
-    document.write(process.versions.electron)
-  </script>.
+  <div class="version">
+    <div>
+      N:<script>
+        document.write(process.versions.node)
+      </script>
+    </div>
+    <div>
+      C:<script>
+        document.write(process.versions.chrome)
+      </script>
+    </div>
+    <div>
+      E:<script>
+        document.write(process.versions.electron)
+      </script>
+    </div>
+  </div>
+
 </body>
 
 </html>
