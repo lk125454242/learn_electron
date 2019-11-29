@@ -57,3 +57,11 @@ Note: If you're using Linux Bash for Windows, [see this guide](https://www.howto
 [pdf-to-printer](https://github.com/artiebits/pdf-to-printer)
 ###### IPP打印
 [ipp-printer](https://github.com/watson/ipp-printer)
+
+
+
+### API 
+
+> win.previewFile(path[, displayName]) // 预览文件
+
+> app.getPath(name) // 获取用户路径

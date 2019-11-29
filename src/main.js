@@ -39,13 +39,21 @@ const createWindow = () => {
       // webviewTag: true // 是否启用 <webview> tag标签
     }
   });
+  // 主页面加载完成 回调
+  mainWindow.webContents.on("did-finish-load", function() {
+    console.log('主页面加载完成')
+    const content = mainWindow.webContents
+    content.executeJavaScript('alert(123)', true)
+    .then((result) => {
+      console.log(result) // Will be the JSON object from the fetch call
+    })
+  });
 
   // 并加载应用程序的index.html。
   // mainWindow.loadFile('./public/index.html')
-  console.log(
-    'MAIN_WINDOW_WEBPACK_ENTRY', MAIN_WINDOW_WEBPACK_ENTRY
-  )
-  mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
+  // mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
+  mainWindow.loadURL('http://localhost:8080');
+
   // mainWindow.loadURL('https://github.com')
 
   // console.log('getPrinter', getPrinter(mainWindow))
